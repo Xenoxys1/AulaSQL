@@ -25,7 +25,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     public void logar() {
-        String sql = "select * from tb_usuarios where login = ? and senha = ?";
+        String sql = "select * from tb_usuarios where loginUsu = ? and senhaUsu = ?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtUsuario.getText());
@@ -36,6 +36,7 @@ public class TelaLogin extends javax.swing.JFrame {
             if (rs.next()) {
                 TelaPrincipal principal = new TelaPrincipal();
                 principal.setVisible(true);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário e/ou senha inválidos");
             }

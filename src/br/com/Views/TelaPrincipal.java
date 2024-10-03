@@ -4,6 +4,8 @@
  */
 package br.com.Views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ArthurServ
@@ -27,11 +29,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
+        sMenuUsuarios = new javax.swing.JMenuItem();
+        sMenuClientes = new javax.swing.JMenuItem();
+        menuOpcoes = new javax.swing.JMenu();
+        sMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Principal");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         jLabel1.setText("Tela Principal");
+
+        menuCadastro.setText("Cadastro");
+
+        sMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioicon.png"))); // NOI18N
+        sMenuUsuarios.setText("Usuários");
+        sMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuUsuariosActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(sMenuUsuarios);
+
+        sMenuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clienteicon.png"))); // NOI18N
+        sMenuClientes.setText("Clientes");
+        sMenuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuClientesActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(sMenuClientes);
+
+        jMenuBar1.add(menuCadastro);
+
+        menuOpcoes.setText("Opções");
+
+        sMenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sairicon.png"))); // NOI18N
+        sMenuSair.setText("Sair");
+        sMenuSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sMenuSairActionPerformed(evt);
+            }
+        });
+        menuOpcoes.add(sMenuSair);
+
+        jMenuBar1.add(menuOpcoes);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,11 +94,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuUsuariosActionPerformed
+        TelaUsuarios tUsuarios = new TelaUsuarios();
+        tUsuarios.setVisible(true);
+        
+    }//GEN-LAST:event_sMenuUsuariosActionPerformed
+
+    private void sMenuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuSairActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair?",
+                "Sair", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            dispose();
+        }
+    }//GEN-LAST:event_sMenuSairActionPerformed
+
+    private void sMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sMenuClientesActionPerformed
+        TelaClientes tClientes = new TelaClientes();
+        tClientes.setVisible(true);
+    }//GEN-LAST:event_sMenuClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,5 +156,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenuItem sMenuClientes;
+    private javax.swing.JMenuItem sMenuSair;
+    private javax.swing.JMenuItem sMenuUsuarios;
     // End of variables declaration//GEN-END:variables
 }
